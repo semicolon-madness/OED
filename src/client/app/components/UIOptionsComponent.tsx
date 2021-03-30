@@ -77,9 +77,6 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 		const zIndexFix: React.CSSProperties = {
 			zIndex: 0
 		};
-		const messages = defineMessages({
-			barStackingTip: { id: 'bar.stacking.tip' }
-		});
 
 		return (
 			<div>
@@ -121,12 +118,14 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 								<FormattedMessage id='4.weeks' />
 							</Button>
 						</ButtonGroup>
+						<TooltipMarkerComponent page='home' helpTextId='help.home.bar.interval.tip' />
 						<Button
 							outline={!this.state.showSlider}
 							onClick={this.toggleSlider}
 						>
 							<FormattedMessage id='toggle.custom.slider' />
 						</Button>
+						<TooltipMarkerComponent page='home' helpTextId='help.home.bar.custom.slider.tip' />
 						{this.state.showSlider &&
 							<div style={divTopPadding}>
 								<Slider
@@ -179,10 +178,12 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 								<FormattedMessage id='4.weeks' />
 							</Button>
 						</ButtonGroup>
+						<TooltipMarkerComponent page='home' helpTextId='help.home.compare.interval.tip' />
 						<Dropdown isOpen={this.state.compareSortingDropdownOpen} toggle={this.toggleDropdown}>
 							<DropdownToggle caret>
 								<FormattedMessage id='sort' />
 							</DropdownToggle>
+							<TooltipMarkerComponent page='home' helpTextId='help.home.compare.sort.tip' />
 							<DropdownMenu>
 								<DropdownItem
 									active={this.props.compareSortingOrder === SortingOrder.Alphabetical}
@@ -254,12 +255,6 @@ class UIOptionsComponent extends React.Component<UIOptionsPropsWithIntl, UIOptio
 
 	private handleChangeBarStacking() {
 		this.props.changeBarStacking();
-	}
-
-	// This is an issue with typings for React.FormEvent<> and ChangeEvent<>
-	// The type of value is actually number
-	private handleSpanButton(value: any) {
-		this.props.changeDuration(moment.duration(value, 'days'));
 	}
 
 	private handleCompareButton(comparePeriod: ComparePeriod) {
