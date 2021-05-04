@@ -5,6 +5,9 @@
 # *
 
 # Dockerfile for NodeJS application portion
+# for use with the s390x architecture, replace line 11 with line 10:
+
+# FROM s390x/node:latest
 FROM node:latest
 
 # Create the directory for the app
