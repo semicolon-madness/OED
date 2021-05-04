@@ -5,7 +5,7 @@
 # *
 
 # Dockerfile for NodeJS application portion
-FROM S390x/node:latest
+FROM s390x/node:latest
 
 # Create the directory for the app
 RUN mkdir -p "/usr/src/app"
